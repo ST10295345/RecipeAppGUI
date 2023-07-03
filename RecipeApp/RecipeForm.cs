@@ -75,7 +75,6 @@ namespace RecipeApp
 
         }
 
-        //
         private void DeleteRecipeButton_Click(object sender, EventArgs e)
         {
             // DeleteRecipe code here
