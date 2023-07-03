@@ -193,8 +193,79 @@ namespace RecipeApp
     }
 
     // Recipe class 
+    // Recipe class
     class Recipe
     {
-        // Recipe class code here
+        public List<string> recipeData = new List<string>();
+        private double scalingFactor = 1.0;
+        public int Calories { get; private set; }
+
+        public string Name { get; set; }
+
+        public void AddIngredient(string ingredient)
+        {
+            recipeData.Add(ingredient);
+        }
+
+        public void AddStep(string step)
+        {
+            recipeData.Add(step);
+        }
+
+        public void SetCalories(int calories)
+        {
+            Calories = calories;
+        }
+
+        public void DisplayRecipe()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n***** The Recipe App *****\n");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"           \"{Name}\"");
+            Console.ResetColor();
+            Console.WriteLine("____________________________\n");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("           **Ingredients**");
+            Console.ResetColor();
+
+            foreach (var item in recipeData)
+            {
+                if (item.StartsWith("Ingredient"))
+                {
+                    Console.WriteLine($"\"{item}\"");
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("           **Steps**");
+            Console.ResetColor();
+            foreach (var item in recipeData)
+            {
+                if (item.StartsWith("Step"))
+                {
+                    Console.WriteLine($"\"{item}\"");
+                }
+            }
+        }
+
+        public void ScaleRecipe(double factor)
+        {
+            scalingFactor = factor;
+        }
+
+        public void ResetScalingFactor()
+        {
+            scalingFactor = 1.0;
+        }
+
+        public void ClearRecipe()
+        {
+            recipeData.Clear();
+            scalingFactor = 1.0;
+        }
     }
 }
