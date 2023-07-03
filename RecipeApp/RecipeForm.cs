@@ -100,6 +100,27 @@ namespace RecipeApp
         private void ScaleRecipeButton_Click(object sender, EventArgs e)
         {
             // ScaleRecipe code here
+
+            static void ScaleRecipe(Dictionary<string, Recipe> recipes)
+            {
+                Console.Write("Enter the name of the recipe you want to scale: ");
+                string recipeName = Console.ReadLine();
+
+                if (recipes.ContainsKey(recipeName))
+                {
+                    Console.Write("Enter the scaling factor (0.5, 2, or 3): ");
+                    double factor = double.Parse(Console.ReadLine());
+
+                    Recipe recipe = recipes[recipeName];
+                    recipe.ScaleRecipe(factor);
+                    Console.WriteLine($"Recipe '{recipeName}' has been scaled by a factor of {factor}.");
+                }
+                else
+                {
+                    Console.WriteLine($"Recipe '{recipeName}' not found.");
+                }
+            }
+
         }
 
         private void DisplayRecipeButton_Click(object sender, EventArgs e)
