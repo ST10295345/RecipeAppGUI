@@ -155,6 +155,9 @@ namespace RecipeApp
         private void FilterRecipesButton_Click(object sender, EventArgs e)
         {
             // FilterRecipes code here
+
+
+
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
