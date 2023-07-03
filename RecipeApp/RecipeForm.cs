@@ -156,6 +156,32 @@ namespace RecipeApp
         {
             // FilterRecipes code here
 
+            static void FilterRecipes(Dictionary<string, Recipe> recipes)
+            {
+                Console.WriteLine("Filter Options:");
+                Console.WriteLine("1. Filter by ingredient");
+                Console.WriteLine("2. Filter by food group");
+                Console.WriteLine("3. Filter by maximum calories");
+
+                Console.Write("Enter your choice (1-3): ");
+                int choice = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        FilterByIngredient(recipes);
+                        break;
+                    case 2:
+                        FilterByFoodGroup(recipes);
+                        break;
+                    case 3:
+                        FilterByMaxCalories(recipes);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
+            }
 
 
         }
