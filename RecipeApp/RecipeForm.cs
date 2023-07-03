@@ -192,7 +192,7 @@ namespace RecipeApp
         }
     }
 
-    // Recipe class (unchanged)
+    // Recipe class 
     class Recipe
     {
         // Recipe class code here
