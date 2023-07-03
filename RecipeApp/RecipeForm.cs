@@ -126,6 +126,30 @@ namespace RecipeApp
         private void DisplayRecipeButton_Click(object sender, EventArgs e)
         {
             // DisplayRecipe code here
+
+            static void DisplayRecipe(Dictionary<string, Recipe> recipes)
+            {
+                Console.Write("Enter the name of the recipe you want to display: ");
+                string recipeName = Console.ReadLine();
+
+                if (recipes.ContainsKey(recipeName))
+                {
+                    Recipe recipe = recipes[recipeName];
+                    recipe.DisplayRecipe();
+
+                    Console.WriteLine($"Calories: {recipe.Calories}");
+
+                    if (recipe.Calories > 300)
+                    {
+                        Console.WriteLine("This recipe has more than 300 calories.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Recipe '{recipeName}' not found.");
+                }
+            }
+
         }
 
         private void FilterRecipesButton_Click(object sender, EventArgs e)
