@@ -17,7 +17,61 @@ namespace RecipeApp
         {
             // AddRecipe code here
 
+            static void AddRecipe(Dictionary<string, Recipe> recipes)
+            {
+                Console.Write("Enter the name of the recipe: ");
+                string recipeName = Console.ReadLine();
 
+                Recipe recipe = new Recipe();
+                recipe.Name = recipeName;
+
+                Console.Write("Please enter the number of ingredients in your recipe: ");
+                int numIngredients = int.Parse(Console.ReadLine());
+
+                for (int i = 1; i <= numIngredients; i++)
+                {
+                    Console.Write($"Please enter the name of ingredient {i}: ");
+                    string name = Console.ReadLine();
+
+                    Console.Write($"Please enter the amount of ingredient {i} you want: ");
+                    double amount = double.Parse(Console.ReadLine());
+
+                    Console.Write($"Please enter the unit of measurement for ingredient {i}: ");
+                    string unit = Console.ReadLine();
+
+                    recipe.AddIngredient($"Ingredient {i}: {amount} {unit} {name}");
+                }
+
+                while (true)
+                {
+                    Console.Write("Would you like to enter a step? (y/n): ");
+                    string choice = Console.ReadLine().ToLower();
+
+                    if (choice == "y")
+                    {
+                        Console.Write($"Enter step {recipe.recipeData.Count - numIngredients + 1}: ");
+                        string stepDescription = Console.ReadLine();
+
+                        recipe.AddStep($"Step {recipe.recipeData.Count - numIngredients + 1}: {stepDescription}");
+                    }
+                    else if (choice == "n")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid choice. Please try again.");
+                    }
+                }
+
+                Console.Write("Enter the number of calories in the recipe: ");
+                int calories = int.Parse(Console.ReadLine());
+
+                recipe.SetCalories(calories);
+
+                recipes.Add(recipeName, recipe);
+                Console.WriteLine($"Recipe '{recipeName}' has been added successfully.");
+            }
 
         }
 
